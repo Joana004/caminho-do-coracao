@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Colégio Caminho do Coração – Educação com Excelência</title>
+    <style>
+      :root {
+        --primary: #1e4fa3;
+        --primary-dark: #153a7a;
+        --accent: #f5a623;
+        --bg: #ffffff;
+        --bg-alt: #f3f6fb;
+        --text: #1f2937;
+        --muted: #5b6676;
+        --card: #ffffff;
+        --border: #e1e7f0;
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --primary: #5b8def;
+          --primary-dark: #3d6fd1;
+          --accent: #f5a623;
+          --bg: #0f1621;
+          --bg-alt: #151e2c;
+          --text: #e7ecf4;
+          --muted: #9aa7ba;
+          --card: #1a2434;
+          --border: #263248;
+        }
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 70px;
+      }
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          Arial,
+          sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        line-height: 1.6;
+      }
+      img {
+        max-width: 100%;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .container {
+        width: min(1100px, 92%);
+        margin: 0 auto;
+      }
+      section {
+        padding: 72px 0;
+      }
+      .alt {
+        background: var(--bg-alt);
+      }
+      h1,
+      h2,
+      h3 {
+        line-height: 1.2;
+        margin: 0 0 12px;
+      }
+      h2 {
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        text-align: center;
+      }
+      .sub {
+        text-align: center;
+        color: var(--muted);
+        max-width: 620px;
+        margin: 0 auto 40px;
+      }
+
+      /* Header */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+      }
+      .logo {
+        font-weight: 800;
+        font-size: 1.2rem;
+        color: var(--primary);
+      }
+      .logo span {
+        color: var(--accent);
+      }
+      nav ul {
+        display: flex;
+        gap: 22px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      nav a {
+        font-size: 0.95rem;
+        color: var(--muted);
+        font-weight: 500;
+      }
+      nav a:hover {
+        color: var(--primary);
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 26px;
+        border-radius: 8px;
+        font-weight: 600;
+        border: 2px solid transparent;
+        cursor: pointer;
+        background: var(--accent);
+        color: #1a1a1a;
+        transition: transform 0.15s;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+      .btn.outline {
+        background: transparent;
+        border-color: #fff;
+        color: #fff;
+      }
+
+      /* Hero */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          var(--primary-dark),
+          var(--primary)
+        );
+        color: #fff;
+        text-align: center;
+        padding: 110px 0;
+      }
+      .hero h1 {
+        font-size: clamp(2rem, 5vw, 3.2rem);
+      }
+      .hero p {
+        max-width: 600px;
+        margin: 0 auto 28px;
+        opacity: 0.92;
+        font-size: 1.1rem;
+      }
+      .hero .actions {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      /* Grids */
+      .grid {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 28px 24px;
+        text-align: center;
+      }
+      .card .icon {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+      }
+      .card p {
+        color: var(--muted);
+        margin: 0;
+        font-size: 0.95rem;
+      }
+
+      /* About */
+      .about {
+        display: grid;
+        gap: 40px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        align-items: center;
+      }
+      .about-img {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        border-radius: 16px;
+        min-height: 280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 5rem;
+      }
+      .about h2 {
+        text-align: left;
+      }
+      .about p {
+        color: var(--muted);
+      }
+      .stats {
+        display: flex;
+        gap: 32px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+      .stats strong {
+        display: block;
+        font-size: 1.8rem;
+        color: var(--primary);
+      }
+      .stats span {
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      /* Testimonials */
+      .quote {
+        text-align: left;
+      }
+      .quote p {
+        font-style: italic;
+        margin-bottom: 14px;
+      }
+      .quote strong {
+        color: var(--primary);
+        font-size: 0.9rem;
+      }
+
+      /* Contact */
+      .contact {
+        display: grid;
+        gap: 32px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+      .info p {
+        margin: 6px 0;
+        color: var(--muted);
+      }
+      form {
+        display: grid;
+        gap: 12px;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: var(--card);
+        color: var(--text);
+        font: inherit;
+      }
+      input:focus,
+      textarea:focus {
+        outline: 2px solid var(--primary);
+        border-color: transparent;
+      }
+      form .btn {
+        background: var(--primary);
+        color: #fff;
+        width: 100%;
+      }
+
+      footer {
+        background: var(--primary-dark);
+        color: #dbe5f7;
+        text-align: center;
+        padding: 28px 0;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 720px) {
+        nav ul {
+          display: none;
+        }
+        section {
+          padding: 52px 0;
+        }
+        .hero {
+          padding: 80px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <a href="#inicio" class="logo"
+          >Colégio <span>Caminho do Coração</span></a
+        >
+        <nav>
+          <ul>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#cursos">Cursos</a></li>
+            <li><a href="#diferenciais">Diferenciais</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </nav>
+        <a href="#contacto" class="btn">Matrículas</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero" id="inicio">
+        <div class="container">
+          <h1>Educação que prepara para o futuro</h1>
+          <p>
+            Um ambiente acolhedor, professores dedicados e um ensino de
+            qualidade para cada fase do crescimento do seu filho.
+          </p>
+          <div class="actions">
+            <a href="#contacto" class="btn">Inscreva-se agora</a>
+            <a href="#sobre" class="btn outline">Conheça a escola</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sobre -->
+      <section id="sobre">
+        <div class="container about">
+          <div>
+            <h2>Sobre nós</h2>
+            <p>
+              Há mais de 15 anos formamos alunos com conhecimento, valores e
+              espírito crítico. A nossa missão é oferecer uma educação completa,
+              onde cada criança é acompanhada de forma individual.
+            </p>
+            <div class="stats">
+              <div><strong>15+</strong><span>Anos de experiência</span></div>
+              <div><strong>800</strong><span>Alunos</span></div>
+              <div><strong>60</strong><span>Professores</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cursos / Níveis -->
+      <section class="alt" id="cursos">
+        <div class="container">
+          <h2>Níveis de ensino</h2>
+          <p class="sub">
+            Do pré-escolar ao ensino secundário, com programas adaptados a cada
+            idade.
+          </p>
+          <div class="grid">
+            <div class="card">
+              <h3>Pré-escolar</h3>
+              <p>
+                Aprendizagem através do brincar, com foco no desenvolvimento
+                social e criativo.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Ensino Primário</h3>
+              <p>Bases sólidas em leitura, escrita, matemática e ciências.</p>
+            </div>
+            <div class="card">
+              <h3>1.º Ciclo</h3>
+              <p>Estímulo ao pensamento crítico e à curiosidade científica.</p>
+            </div>
+            <div class="card">
+              <h3>2.º Ciclo</h3>
+              <p>
+                Preparação para o ensino superior e para o mercado de trabalho.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Diferenciais -->
+      <section id="diferenciais">
+        <div class="container">
+          <h2>Porquê escolher-nos</h2>
+          <p class="sub">O que torna a nossa escola especial.</p>
+          <div class="grid">
+            <div class="card">
+              <h3>Professores qualificados</h3>
+              <p>Equipa experiente e em formação contínua.</p>
+            </div>
+            <div class="card">
+              <h3>Tecnologia</h3>
+              <p>Laboratório de informática e recursos digitais.</p>
+            </div>
+            <div class="card">
+              <h3>Desporto e artes</h3>
+              <p>Atividades extracurriculares para todos os gostos.</p>
+            </div>
+            <div class="card">
+              <h3>Ambiente seguro</h3>
+              <p>Instalações vigiadas e acompanhamento próximo.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Depoimentos -->
+      <section class="alt" id="depoimentos">
+        <div class="container">
+          <h2>O que dizem os pais</h2>
+          <p class="sub">A confiança das famílias é o nosso maior orgulho.</p>
+          <div class="grid">
+            <div class="card quote">
+              <p>
+                “O meu filho evoluiu muito desde que entrou. Os professores são
+                atenciosos e dedicados.”
+              </p>
+              <strong>— Maria S., encarregada de educação</strong>
+            </div>
+            <div class="card quote">
+              <p>
+                “Excelente ambiente e ótima comunicação com a escola. Recomendo
+                a todos.”
+              </p>
+              <strong>— João P., encarregado de educação</strong>
+            </div>
+            <div class="card quote">
+              <p>
+                “Aqui sinto que sou ouvida e que posso aprender de verdade.”
+              </p>
+              <strong>— Ana L., aluna</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contacto -->
+      <section id="contacto">
+        <div class="container">
+          <h2>Contacte-nos</h2>
+          <p class="sub">
+            Agende uma visita ou peça informações sobre matrículas.
+          </p>
+          <div class="contact">
+            <div class="info">
+              <h3>Informações</h3>
+              <p>Rua da Escola, n.º 123, Luanda</p>
+              <p>+244 900 000 000</p>
+              <p>geral@colegiohorizonte.ao</p>
+              <p>Seg – Sex: 7h30 – 17h00</p>
+            </div>
+            <form
+              onsubmit="
+                event.preventDefault();
+                alert('Mensagem enviada! Entraremos em contacto em breve.');
+              "
+            >
+              <input type="text" placeholder="O seu nome" required />
+              <input type="email" placeholder="O seu email" required />
+              <textarea
+                rows="4"
+                placeholder="A sua mensagem"
+                required
+              ></textarea>
+              <button type="submit" class="btn">Enviar mensagem</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        © 2026 Colégio Horizonte. Todos os direitos reservados.
+      </div>
+    </footer>
+  </body>
+</html>
